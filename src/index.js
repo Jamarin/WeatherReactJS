@@ -1,3 +1,9 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+import $ from 'jquery';
+import Popper from 'popper.js';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import 'weather-icons2/css/weather-icons.min.css'
+import 'weather-icons2/css/weather-icons-wind.min.css'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';

@@ -1,27 +1,26 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import { Home } from './pages/home'
+
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+
+  state = {weather: {}, loading: true}
+
+  componentDidMount () {
+    
+    console.log("ComponentDidMount")
+    fetch('http://api.openweathermap.org/data/2.5/weather?q=Santander,es&appid=6bb7df90e20ee7fb5b0e7dcee8c79de2')
+    .then(res => res.json())
+    .then(results => {
+      this.setState({ weather: results, loading: false })
+    })
+  }
+
+  render () {
+    const weather = this.state
+    let retornar = (this.state.loading) ? <p>Loading...</p> : <Home weather={ weather }></Home>
+    return retornar
   }
 }
 
